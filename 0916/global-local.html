@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>全局变量和局部变量练习</title>
+</head>
+
+<body>
+    <script>
+        // 变量的作用域
+        // 局部变量
+        function test() {
+            var x = 5;
+            alert("这个是局部变量：" + x);
+        }
+        test();
+        //   alert(x);  会报错，证明事不存在的
+        function test2() {
+            y = 10;
+            alert("不用var声明的变量：" + y);
+        }
+        test2();
+        alert("这个是全局变量：" + y);
+        // 再次理解变量的作用域
+        var x = 12,
+            y = 14;
+
+        function test3(x, y) {
+            document.write("输出a的值为：" + a + "<br/>"); //没有定义
+            document.write("函数体内x的值：" + x + "<br/>");
+            // 这是一个全局变量,没有用var声明的变量
+            z = x + y;
+            // 注意这是一个局部变量
+            var zz=x+y;
+            x = x + y;
+            var a = 132;
+            document.write("输出定义后的a的值为：" + a + "<br/>");
+            document.write("输出方法体内改变的值：" + x + "<br/>");
+            return z;
+        }
+        test3();
+        document.write("<hr/>");
+        test3(x, y);
+        document.write("<br/>" + "输出三个全局变量的值：" + "x=" + x + "," + "y=" + y + "," + "z=" + z+"   输出一个局部变量会报错");
+        // 注意全局变量容易被方法体内声明的全局变量覆盖
+    </script>
+</body>
+
+</html>
