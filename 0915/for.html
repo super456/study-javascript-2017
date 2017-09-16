@@ -10,65 +10,110 @@
 
 <body>
     <script>
+        /*
+                        			 for(exp1;exp2;exp3){
+                        			 	循环体;
+                        			 }
+                        			 exp1:无条件的执行第一个表达式
+                        			 exp2:是判断是否能执行循环体的条件
+                        			 exp3:做增量的操作
+
+                                     通过break结束for循环
+                                     continue:代表跳过当次循环，进入下次循环
+                        			 */
+
+
         // 输出0-100
         for (var i = 0; i <= 100; i++) {
             document.write(i + '<br/>');
         }
         document.write("<hr/ color='red'/>");
+
         // 输出1-100之间的奇数
         for (var i = 1; i <= 100; i += 2) {
             document.write(i + "<br/>");
         }
         document.write("<hr/>");
+
+
         // 求1-100奇数的和
         var sum = 0;
         for (var i = 1; i <= 100; i += 2) {
             sum += i;
         }
         document.write("<h1>" + sum + "</h1>");
+
+
         // for循环练习：正序的九九乘法表
         document.write("<table border='1' cellspacing='2'>");
         for (var i = 1; i <= 9; i++) {
             document.write('<tr>');
             for (var j = 1; j <= i; j++) {
-                document.write('<td>' + j +'X'+ i + '=' + (i * j) + '</td>');
+                document.write('<td>' + j + 'X' + i + '=' + (i * j) + '</td>');
             }
             document.write("</tr>");
         }
         document.write("</table>");
         document.write("<hr color='red'/>");
+
+
         // 倒序的九九乘法表
         document.write("<table border='1' cellspacing='2' bgcolor='gray'>");
-        for(var i=9;i>0;i--){
+        for (var i = 9; i > 0; i--) {
             document.write("<tr>");
-            for(var j=9;j>=i;j--){
-                document.write("<td>"+j+"X"+i+"="+(i*j)+"</td>");
+            for (var j = 9; j >= i; j--) {
+                document.write("<td>" + j + "X" + i + "=" + (i * j) + "</td>");
             }
             document.write("</tr>");
         }
         document.write("</table>");
+
+
+
+
+        //  通过break结束for循环
+        for (var i = 1; i >= 0; ++i) {
+            if (i > 100) {
+                break; //结束for循环
+            }
+            document.write(i + '<br/>');
+        }
+        document.write('<hr color="red"/>');
+
+        //  continue:代表跳过当次循环，进入下次循环
+        for (var i = 1; i <= 10; i++) {
+            if (i == 3) {
+                //					break;
+                continue;
+                document.write('hello king');
+            }
+            document.write(i + '<br/>');
+        }
+
+
+
         // 使用for循环实现百钱买白鸡的问题
         // 公鸡5元一只，母鸡3元一只，小鸡3只一元，100元可以买100只鸡,问：公鸡，母鸡和小鸡各多少只？
         // 方法一：三层嵌套循环
         document.write("方法一：三个嵌套for循环");
-        for(var i=0;i<=20;i++){
-            for(var j=0;j<=33;j++){
-                for(var k=0;k<=300;k++){
-                    if(i*5+j*3+k/3==100 && k%3==0 && i+j+k==100){
+        for (var i = 0; i <= 20; i++) {
+            for (var j = 0; j <= 33; j++) {
+                for (var k = 0; k <= 300; k++) {
+                    if (i * 5 + j * 3 + k / 3 == 100 && k % 3 == 0 && i + j + k == 100) {
                         document.write("<hr color='yellow'/>");
-                        document.write("公鸡只数为："+i+"  "+"母鸡只数为："+j+"  "+"小鸡只数为："+k);
+                        document.write("公鸡只数为：" + i + "  " + "母鸡只数为：" + j + "  " + "小鸡只数为：" + k);
                     }
                 }
             }
         }
         // 方法二：两种for循环嵌套及一个变量
-        document.write("<br/>"+"方法二：两种for嵌套+一个变量");
-        for(var i=0;i<=20;i++){
-            for(var j=0;j<=33;j++){
-                var z=100-i-j;
-                if(i*5+j*3+z/3==100 && z%3==0){
+        document.write("<br/>" + "方法二：两种for嵌套+一个变量");
+        for (var i = 0; i <= 20; i++) {
+            for (var j = 0; j <= 33; j++) {
+                var z = 100 - i - j;
+                if (i * 5 + j * 3 + z / 3 == 100 && z % 3 == 0) {
                     document.write("<hr color='red'/>");
-                    document.write("公鸡只数为："+i+"  "+"母鸡只数为："+j+"  "+"小鸡只数为："+z);
+                    document.write("公鸡只数为：" + i + "  " + "母鸡只数为：" + j + "  " + "小鸡只数为：" + z);
                 }
             }
         }

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>全局函数练习</title>
+</head>
+
+<body>
+    <script>
+        // 常用全局函数一
+        // parseInt()默认转换成十进制数，字符转换取合法部分前面的，会忽略空格
+        document.write(parseInt('456'));
+        document.write('<br/>');
+        document.write(parseInt('789abc') + '<br/>');
+        document.write(parseInt('   123   456') + '<br/>');
+        document.write(parseInt('F') + '<br/>');
+        // 注意这里输出的数，填上基数之后
+        document.write(parseInt('F', 16) + '<br/>');
+        document.write(parseInt('17', 8) + '<br/>');
+        // 注意：默认开头的0x的数（0一个是零不是字母o），默认转换十六进制数，
+        document.write(parseInt('0xfff') + '<br/>');
+
+        // 转换成浮点数
+        document.write(parseFloat('0.23') + '<br/>');
+        document.write(parseFloat('12.3456abc') + '<br/>');
+        document.write(parseFloat('  4.56') + '<br/>');
+        document.write(parseFloat('abc4.56') + '<br/>');
+
+
+        //  通过isFinite()检测是否是无穷值
+        var x = 123e123;
+        document.write(isFinite(x) + '<br/>');
+        x = Infinity;
+        document.write(isFinite(x) + '<br/>');
+
+
+        //  通过isNaN()检测是否是一个数值
+        x = undefined;
+        document.write(isNaN(x) + '<br/>');
+        x = NaN;
+        document.write(isNaN(x) + '<br/>');
+        x = parseInt('abc456');
+        document.write(x + '<br/>');
+        document.write(isNaN(x) + '<br/>');
+    </script>
+</body>
+
+</html>

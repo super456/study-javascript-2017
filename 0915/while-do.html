@@ -1,35 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>流程控制语句——do..while及while循环练习</title>
 </head>
+
 <body>
     <script>
-    // while循环练习
-    var i=0;
-    while(i<=10){
-        document.write("<hr/>"+i);
-        i++;
-    }
-    document.write("<hr/>");
-    var i=0;
-    while(i<=10){
-        if(i==3){
-            // 注意continue后面的代码将不会执行，会出现死循环，添加i++
+        /*
+                			 while(exp){
+                			 	循环体;
+                			 }
+                			 do{
+                			 	循环体;
+                			 }while(exp);
+                			 */
+        // while循环练习
+        var i = 0;
+        while (i <= 10) {
+            document.write("<hr/>" + i);
             i++;
-            continue;
         }
-        document.write("<br/>"+i);
-        if(i==9){
-            break;
+        document.write("<hr/>");
+        var i = 0;
+        while (i <= 10) {
+            if (i == 3) {
+                // 注意continue后面的代码将不会执行，会出现死循环，添加i++
+                i++;
+                //通过continue跳过当次循环
+
+                continue;
+            }
+            document.write("<br/>" + i);
+            if (i == 9) {
+                // break:可以结束while和do...while
+                break;
+            }
+            i++;
+
         }
-        i++;
-
-    }
-
     </script>
 </body>
+
 </html>

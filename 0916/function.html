@@ -1,19 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>function函数声明练习</title>
 </head>
+
 <body>
     <script>
-        function test(){
+        //函数名称严格区分大小写
+        function TEST() {
+            alert("hello king");
+        }
+        //TEST();
+        //函数名称重复会产生覆盖
+        //test();
+        function test() {
+            alert('hello maizi');
+        }
+        //test();
+        function test() {
             // alert("this is a test!");
         }
         // test();
-        function test1(num1,num2){
-            return num1*num2;
+        function test1(num1, num2) {
+            return num1 * num2;
             // 程序执行碰到return就返回结束，后面程序将不会执行
             return 123;
             return "456king";
@@ -22,18 +35,18 @@
 
 
         // 使用传参默认值效果
-        function test2(num1,num2){
-            num1=num1||100;
-            num2=num2||10000;
-            return num1+num2;
+        function test2(num1, num2) {
+            num1 = num1 || 100;
+            num2 = num2 || 10000;
+            return num1 + num2;
         }
         document.write(test2());
         // 传过多的参数
-        function test3(num1,num2){
-            return num1+num2;
+        function test3(num1, num2) {
+            return num1 + num2;
         }
-        document.write("<br/>"+test3(1,2,3,4,5,));
-        
+        document.write("<br/>" + test3(1, 2, 3, 4, 5, ));
     </script>
 </body>
+
 </html>

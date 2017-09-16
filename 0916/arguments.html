@@ -1,60 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>agruments设置默认参数值练习</title>
 </head>
+
 <body>
     <script>
+
+
         // 设置默认值
-    function calc(num1,num2){
-        if(num1===undefined){
-            num1=0;
-        }
-        num2=num2===undefined?0:num2;
-        return num1+num2;
-    }
-    document.write(calc());
-    document.write('<br/>');
-    document.write(calc(12,56));
-    document.write('<hr/>');
-    // 使用arguments下标索引值设置参数值,它是一个数组
-    function calc1(num1,num2){
-       document.write(arguments[0]);
-       document.write('<br/>');
-       document.write(arguments[1]);
-       document.write('<hr/>');
-       num1=arguments[0]?arguments[0]:0;
-       num2=arguments[1]?arguments[1]:0;
-        return num1+num2;
-    }
-    document.write("<hr color='red'/>");
-    document.write(calc1());
-    document.write('<br/>');
-    document.write(calc1(465,123));
-    // arguments可变参数传输功能：传递多个参数，而不用设置函数参数名
-    function test(){
-        var sum=0;
-        for(var i=0;i<arguments.length;i++){
-            sum+=arguments[i];
-        }
-        return sum;
-    }
-    document.write("<hr>"+test(456,132,7645,44323));
-    // 使用arguments求传参的最大值
-    function calc2(){
-        var max=0;
-        for(var i=0;i<arguments.length;i++){
-            if(max<=arguments[i]){
-                max=arguments[i];
+        function calc(num1, num2) {
+            if (num1 === undefined) {
+                num1 = 0;
             }
+            num2 = num2 === undefined ? 0 : num2;
+            return num1 + num2;
         }
-        return max;
-    }
-    document.write("<hr color='red'/>");
-    document.write(calc2(123,456,1212,45646,123456,12341));
+        document.write(calc());
+        document.write('<br/>');
+        document.write(calc(12, 56));
+        document.write('<hr/>');
+
+
+        // 使用arguments下标索引值设置参数值,它是一个数组
+        function calc1(num1, num2) {
+            document.write(arguments[0]);
+            document.write('<br/>');
+            document.write(arguments[1]);
+            document.write('<hr/>');
+            num1 = arguments[0] ? arguments[0] : 0;
+            num2 = arguments[1] ? arguments[1] : 0;
+            return num1 + num2;
+        }
+        document.write("<hr color='red'/>");
+        document.write(calc1());
+        document.write('<br/>');
+        document.write(calc1(465, 123));
+
+
+        // arguments可变参数传输功能：传递多个参数，而不用设置函数参数名
+        function test() {
+            var sum = 0;
+            for (var i = 0; i < arguments.length; i++) {
+                sum += arguments[i];
+            }
+            return sum;
+        }
+        document.write("<hr>" + test(456, 132, 7645, 44323));
+
+        
+        // 使用arguments求传参的最大值
+        function calc2() {
+            var max = 0;
+            for (var i = 0; i < arguments.length; i++) {
+                if (max <= arguments[i]) {
+                    max = arguments[i];
+                }
+            }
+            return max;
+        }
+        document.write("<hr color='red'/>");
+        document.write(calc2(123, 456, 1212, 45646, 123456, 12341));
     </script>
 </body>
+
 </html>

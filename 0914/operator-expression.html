@@ -9,33 +9,43 @@
     <script>
         var r = 8,
             p = 3.14;
-        var s=r*r*p; 
-        document.write('圆的面积：'+s);
+        var s = r * r * p;
+        document.write('圆的面积：' + s);
+
+
         // 算术运算符
         document.write("<br/>");
-        document.write(r+p);
+        document.write(r + p);
         document.write("<br/>");
-        document.write(r*p);
+        document.write(r * p);
         document.write("<br/>");
-        document.write(r-p);
+        document.write(r - p);
         document.write("<br/>");
-        document.write(r/p);
+        document.write(r / p);
         document.write('<br/>');
-        document.write(-r%p);
+        document.write(-r % p);
+
+
         // 加号运算符比较特殊
         document.write('<br/>');
-        document.write(r+'8');
+        document.write(r + '8');
         document.write('<br/>');
+
+
         // 注意结果是r+p再拼接5djaoi
-        document.write(r+p+"5djaoi");
+        document.write(r + p + "5djaoi");
+
+
         // 数字转换字符串
         document.write('<br/>');
-        document.write(''+r);
+        document.write('' + r);
         document.write('<br/>');
-        p=''+8;
+        p = '' + 8;
         document.write(typeof p);
+
+
         // 自增自减运算符(整型、浮点型、布尔型都支持)
-        var num1=5;
+        var num1 = 5;
         document.write('<br/>');
         document.write(num1++);
         document.write('<br/>');
@@ -43,68 +53,113 @@
         document.write('<br/>');
         document.write(--num1);
         document.write('<br/>');
+
+
         // 会刷新页面
         // document.write(--false);
-        var num2=true;
+        var num2 = true;
         // alert(--false);
         document.write(--num2);
+
+
         // 字符链接符：+
         document.write('<br/>');
-        document.write("hello wordl"+"465");
+        document.write("hello wordl" + "465");
         document.write("<br/>");
-        document.write(1123+"fkasdjl");
+        document.write(1123 + "fkasdjl");
         document.write('<br/>');
-        document.write(''+r+num1);
+        document.write('' + r + num1);
+
+
         // 赋值运算符
-        var a=5;
-        a+=8;//a=a+8
-        document.write('<br/>'+a);
+        var a = 5;
+        a += 8; //a=a+8
+        document.write('<br/>' + a);
+
+
         // 比较运算符
         document.write('<br/>');
-        document.write(a>num1);
+        document.write(a > num1);
         document.write('<br/>');
-        document.write(1===true);
+        document.write(1 === true);
+
+
         // 逻辑运算符：短路现象
+        //要求两个表达式为true，结果才是true
+        //			alert(true && true);
+        //			alert(true && false);
+        //			alert(false && true);
+        //			alert(false && false);
+        //如果第一个表达式为false，整个结果为false，就把第二个表达式短路了
         // 逻辑与
         document.write("<br/>");
-        var i=0,j=1;
-        if(i--&& j++){
+        var i = 0,
+            j = 1;
+        if (i-- && j++) {
             document.write("hello");
-        }else{
+        } else {
             document.write("world");
         }
         document.write('<br/>');
         document.write(i);
         document.write("<br/>");
+
         // j++被短路未执行
         document.write(j);
+
         // 逻辑或
-        var a=0,b=1;
-        if(a--|| b++){
+        //两个表达中有一个为true，整个结果为true
+        //			alert(true || true);
+        //			alert(true || false);
+        //			alert(false || true);
+        //			alert(false || false);
+        //如果第一个表达式为true，整个结果为true，把第二个表达式短路了
+
+        var a = 0,
+            b = 1;
+        if (a-- || b++) {
             document.write("<br/>");
             document.write("true");
-        }else{
+        } else {
             document.write('<br/>');
             document.write("false");
         }
         document.write("<br/>");
-        document.write(a+"  "+b);
-        // 逻辑非
+        document.write(a + "  " + b);
+
+
+        // 逻辑非：取反的作用
+        var takeback = true;
+        document.write(!takeback + '<br/>');
+
         // 三元运算符
-        var sanyuan=a>b?"aa":"bb";
+        /*
+			 if(exp){
+			 	exp为true的代码段;
+			 }else{
+			 	exp为false的代码段;
+			 }
+			 exp1?exp2:exp3;
+			 */
+        var sanyuan = a > b ? "aa" : "bb";
         document.write("<br/>");
         document.write(sanyuan);
+
         // 逗号表达式：douhoa的值为最后一个表达式的值
-        var douhoa=(a=8,b=9,c=389);
+        var douhoa = (a = 8, b = 9, c = 389);
         document.write("<br/>");
         document.write(douhoa);
+
+
         // void运算符：void（）；
-        var voidreturn=void(a=2);
+        var voidreturn = void(a = 2);
         document.write("<br/>");
         document.write(voidreturn);
-        // typeof 运算符返回变量的类型
-        //运算符优先级
         
+        // typeof 运算符返回变量的类型
+        var test=NaN;
+        document.write(typeof test);
+        //运算符优先级
     </script>
 </head>
 

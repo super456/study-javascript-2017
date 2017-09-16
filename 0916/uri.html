@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>编码、解码URI练习</title>
+</head>
+
+<body>
+    <script>
+        // 常用全局函数二
+        // 封装字符串URL编码：注意不会转义的特殊字符和ASCII
+        var url = "http://wwww.super456.github.io?qs=this is a test&para=4+5+6";
+        var res = encodeURI(url);
+        document.write(res + '<br/>');
+        // 解析URL编码
+        var res1 = decodeURI(res);
+        document.write(res1 + '<br/>');
+        // 讲字符串URL编码为URI组件
+        var res2 = encodeURIComponent(url);
+        document.write(res2 + '<br/>');
+        var res3 = decodeURIComponent(res2);
+        document.write(res3 + "<br/>");
+
+        // 编码字符串
+        var str = "hello world";
+        var res4 = escape(str);
+        document.write("<hr/>");
+        document.write(res4 + '<br/>');
+        var res6 = unescape(str);
+        document.write(res6 + "<br/>");
+
+        str = "1061996681";
+        var res5 = escape(str);
+        document.write(res5 + '<br/>');
+
+        // eval()该函数会将字符串当做脚本来执行：慎用，危险！
+        eval('var i=456');
+        // 相当于声明了一个变量
+        document.write(i + "<br/>");
+
+        // number()该函数将对象转换为数字，如果不是则返回NaN
+        var num = Boolean(123);
+        document.write(Number(num) + "<br/>");
+        num = "456";
+        document.write(Number(num) + "<br/>");
+        num = "abc456";
+        document.write(Number(num) + "<br/>");
+        // 注意如果是日期的话则转换成1970年1月1日至今的好秒数
+        document.write("<hr color='red'/>");
+        var date = new Date();
+        document.write(Number(date) + "<br/>");
+
+
+        // String()和toString()两者方法一样：将对象转换成字符串
+        var string = null;
+        string = undefined;
+        string = 456;
+        string = NaN;
+        document.write(String(string) + '<br/>');
+    </script>
+</body>
+
+</html>

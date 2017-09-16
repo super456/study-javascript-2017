@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>特殊函数形式及匿名函数练习</title>
+</head>
+
+<body>
+    <script>
+        // 将一个函数赋值给变量，也可以传递函数赋值
+        var test = function test1(num1, num2) {
+            return num1 + num2;
+        };
+        var test3 = test;
+        document.write(typeof test3);
+        document.write("<hr/>");
+        document.write(test3() + "<br/>");
+        document.write(test3(123, 456) + "<br/>");
+
+        // 匿名函数命名与调用,可以赋值给变量也可以传递函数赋值
+        document.write("<hr/>");
+        var test4 = function (x, y) {
+            return x * y;
+        };
+        var test5 = test4;
+        document.write(test4(12, 12) + "<br/>");
+        document.write(test5(123, 456) + '<br/>');
+
+
+        // 回调函数的应用，注意参数名
+        function calc(x, y) {
+            return x() + y();
+        }
+
+        function test6() {
+            return 123;
+        }
+
+        function test7() {
+            return 123;
+        }
+        document.write(calc(test6, test7) + '<br/>');
+
+
+
+        //另一种奇葩的回调函数
+        document.write(calc(function () {
+            return 8;
+        }, function () {
+            return 12;
+        }));
+
+
+
+        // 举一个案例应用：两个函数，将改为一个回调函数
+        document.write("<hr color='yellow' />");
+
+        function arr(a, b, c) {
+            var arr1 = [];
+            for (var i = 0; i < arguments.length; i++) {
+                arr1[i] = arguments[i] * 2;
+            }
+            return arr1;
+        }
+
+        function add(z) {
+            return z + 1;
+        }
+        var arr2 = [];
+        arr2 = arr(123, 456, 789);
+        for (var i = 0; i < arr2.length; i++) {
+            document.write(arr2[i] + "<br/>");
+
+        }
+        for (var i = 0; i < arr2.length; i++) {
+            arr2[i] = add(arr2[i]);
+
+        }
+        document.write("<hr color='red'/>");
+        for (var i = 0; i < arr2.length; i++) {
+            document.write(arr2[i] + "<br/>");
+
+        }
+        //注意这里将改为使用一个回调函数callback
+        function CBfunction(a, b, c, callback) {
+            var arr3 = [];
+            for (var i = 0; i < arguments.length - 1; i++) {
+                arr3[i] = callback(arguments[i] * 2);
+            }
+            for (var i = 0; i < arr3.length; i++) {
+                document.write(arr3[i] + '<br/>');
+            }
+        }
+
+        function addOne(z) {
+            return z + 1;
+        }
+        document.write('<hr/>');
+        CBfunction(123, 456, 789, addOne);
+        document.write('<br/>');
+        // 也可以使用匿名函数
+        CBfunction(123, 456, 789, function (z) {
+            return z + 2
+        });
+
+
+        // 默认的两个回调函数call()（传递的事参数）、apply()（传递的是数组）
+        function CB(x, y) {
+            return x * y;
+        }
+        document.write('<br/>');
+        document.write(CB.call(CB, 12, 12));
+        document.write('<br/>');
+        var paraNum = [123, 456];
+        document.write(CB.apply(CB, paraNum) + '<br/>');
+
+
+        // 自调函数示例，注意括号，只能执行一次
+        (
+            function () {
+                document.write("This is a test" + "<br/>");
+            }
+        )();
+        // 传递参数的自调函数
+        (
+            function (a, b) {
+                document.write(a * b + '<br/>');
+            }
+        )(123, 456);
+    </script>
+</body>
+
+</html>
