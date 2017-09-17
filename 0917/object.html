@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>简单的对象理解——Object练习</title>
+</head>
+
+<body>
+    <script>
+        // 1.通过对象字面量的形式创建对象
+        var obj = {}; //没有任何内容的对象
+        document.write(typeof obj);
+        document.write('<br/>');
+        // 也可以创建对象的时候赋值（键值对），注意逗号隔开
+        var obj1 = {
+            x : 1,
+            y : 2,
+            z : 3
+        };
+        // 注意放在引号问题
+        var obj2 = {
+            'x': 1,
+            "y": 2,
+            'for': "javascript关键字必须放在引号之间",
+            username: "username",
+            'first-name': "dudu",
+            married: true,
+            test: null,
+            test1: undefined,
+            test2: 12.5,
+            person: {
+                age: 18,
+                xuehao: 123,
+                name: "456"
+            }
+        };
+
+
+
+        // 2.通过new object()创建一个对象
+        var obj3 = new Object(); //空对象
+        var obj4 = new Date(); //创建日期对象
+        var obj5 = new Array(); //创建数组对象
+        var obj6 = new RegExp(); //创建正则表达式对象
+
+
+
+        // 3.通过构造函数创建对象
+        // 函数名称首字母大写，主要是分了区分内置函数
+        function Test(){
+
+        }
+        var obj7=new Test();
+        //也可以创建传参的构造函数
+        var n=0,m=0;
+        function Test1(a,b){
+            // this.n=a;
+            // this.m=b;
+            n=a;
+            m=b;
+            document.write(n+"---"+m+'<br/>');
+        }
+        var obj8=new Test1(123,456);
+        document.write(typeof obj8);
+        // instanceof检测对象是否是该函数构造器创建的
+        document.write('<br/>');
+        document.write(obj8 instanceof Test1);
+
+        // 4.通过Object.create创建对象
+        var obj9=Object.create({x:1});
+        var obj10=Object.create(null);
+        // 创建一个普通的空对象
+        var obj11=Object.create(Object.prototype);
+        
+
+    </script>
+</body>
+
+</html>

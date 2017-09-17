@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>对象属性操作练习</title>
+</head>
+
+<body>
+    <script>
+
+        // (一)、查询属性
+        // 1.通过(对象名.属性名)形式，获取对象属性值
+        var person = {
+            username: "abc",
+            age: 20,
+            address: "中大南方"
+        }
+        document.write("用户名为：" + person.username + "<br/>" + "年龄为：" + person.age + "<br/>" + "住址为：" + person.address);
+        // 注意：定义变量来操作对象名.变量名是不能获取对象属性值的，会返回没有定义
+        var key="age";
+        document.write('<br/>'+"通过变量获取用户年龄为："+person.key);
+
+
+
+        //2.通过对象['属性名']形式，获取对象属性值
+        // 注意:如果属性名不确定的时候，或者需要使用变量来动态操作的时候只能使用这种形式
+        document.write('<hr/>');
+        document.write("用户名为：" + person['username'] + "<br/>" + "年龄为：" + person['age'] + "<br/>" + "住址为：" + person['address']);
+        document.write('<br/>');
+        var key="username";
+        // 注意使用变量名不需要引号
+        document.write("通过变量获取用户名为："+person[key]);
+
+
+        // 3.当处于某个d对象方法内部的时候，可以通过this来访问同一对象的属性
+        function  personinfo(username,xuehao,cl){
+           this.username=username;
+           this.xuehao=xuehao;
+           this.cl=cl;
+        }
+        var thisObj=new personinfo("du456",120,"2班");
+        document.write("<hr/>");
+        document.write("通过对象内部this获取属性用户名："+thisObj.username+'<br/>'+"学号为："+thisObj.xuehao+'<br/>'+"班级为："+thisObj.cl);
+
+
+        // (二)、添加属性操作
+        // 1.通过对象名.属性名赋值形式创建添加属性
+        var obj={};//创建一个空对象
+        obj.username="super456";
+        obj.sex="男";
+        obj.height="180";
+        document.write("<hr/>");
+        document.write("1.通过创建对象属性赋值获取属性用户名："+obj.username+'<br/>'+"学号为："+obj.sex+'<br/>'+"班级为："+obj.height);
+
+        // 2.通过对象['属性名']赋值创建属性
+        var obj1={};
+        obj['username']="666";
+        obj['sex']="男";
+        obj['height']="170";
+        document.write("<hr/>");
+        document.write("2.通过创建对象属性赋值获取属性用户名："+obj['username']+'<br/>'+"学号为："+obj['sex']+'<br/>'+"班级为："+obj['height']);
+
+        
+
+    </script>
+</body>
+
+</html>
