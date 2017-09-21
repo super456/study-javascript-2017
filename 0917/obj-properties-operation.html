@@ -61,8 +61,77 @@
         obj['sex']="男";
         obj['height']="170";
         document.write("<hr/>");
-        document.write("2.通过创建对象属性赋值获取属性用户名："+obj['username']+'<br/>'+"学号为："+obj['sex']+'<br/>'+"班级为："+obj['height']);
+        document.write("2.通过创建对象属性赋值获取属性用户名："+obj['username']+'<br/>'+"性别为："+obj['sex']+'<br/>'+"身高为："+obj['height']);
 
+        
+        //3.修改属性值
+        obj.username="My name is du"; 
+        obj['sex']="女";
+        var height="170cm";
+        obj['height']=height;
+        document.write("<hr/>");
+        document.write("3.通过修改对象属性赋值获取属性用户名："+obj['username']+'<br/>'+"性别为："+obj['sex']+'<br/>'+"身高为："+obj['height']);
+
+        
+        //4.删除属性：delete ，只能删除自身属性，不能删除继承属性
+        delete obj.sex;
+        delete obj['height'];
+        document.write("<hr/>");
+        document.write("4.通过删除对象属性获取属性用户名："+obj['username']+'<br/>'+"性别为："+obj['sex']+'<br/>'+"身高为："+obj['height']);
+
+        //5. 遍历属性：for/in
+        var obj2={
+            x:"使用for/in遍历属性",
+            y:456,
+            z:"dududu",
+            m:12.258
+        };
+        // 注意：定义的var变量是遍历后的对象的属性
+        for (var key in obj2) {
+           document.write('<br/>');
+           document.write(obj2[key]);
+           document.write('<br/>');
+        //    这种方式输不出对象值
+        //    document.write(obj2.key);
+        //    console.log(obj2.key);
+        }
+
+        // 6.在对象的属性对应的值添加为函数方法，可以访问本对象的属性及值
+        // 访问方法：对象名.方法名()，将返回定义函数的字符串
+        var obj3={
+            a:456,
+            b:"对象内的函数方法",
+            c:function(){
+                return "这是c对象的返回值";
+            }, 
+            d:function(){
+                return "调用本对象的属性及值a："+obj3.a+"<br/>";
+            }
+        };
+        // 注意要添加函数括号()
+        document.write('<hr/>');
+        document.write(obj3.c());
+        document.write("<br/>");
+        document.write(obj3.d());
+        // 另一种方法：构造函数方式
+        function Person(username,age,address){
+            this.username=username;
+            this.age=age;
+            this.address=address;
+            this.info=function(){
+                return "调用本对象的属性及值："+this.username+" ; "+this.age+"  ;"+this.address+'<br/>';
+            }
+
+        }
+        var p1=new Person("My name is you",34,"广州");
+        document.write(p1.info());
+        // 添加属性及值，然后调用
+        p1.test="这是一个测试";
+        p1.test2=function(){
+            return "这是一个测试呀！";
+        };
+        document.write(p1.test+'<br/>');
+        document.write(p1.test2()+'<br/>');
         
 
     </script>

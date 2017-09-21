@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>对象的结构——原型练习</title>
+</head>
+
+<body>
+    <script>
+        // 1.对象的原型属性：prototype
+        function foo(){};
+        foo.prototype.a="我是对象的原型属性prototype";
+        var obj=new foo();
+        obj.b='one';
+        obj.c="two";
+        document.write(obj.b+"<br/>");
+        document.write(obj.c+"<br/>");
+        document.write("这是对象的原型属性："+obj.a);
+        // 每个对象都有的最原型是：object.prototype
+        document.write('<br/>'+obj.toString());
+        // 注意：原型属性和对象属性相同时，对象属性会覆盖原型属性
+        obj.a="我是对象的属性";
+        document.write("<br/>");
+        document.write(obj.a);
+        delete obj.a;
+        document.write("<br/>"+obj.a);
+        delete foo.prototype.a;
+        document.write('<br/>'+obj.a);
+
+
+        // 2.通过父级对象方法create()，创建的一个对象原型属性
+        var obj2 = Object.create({x:1});
+        function foo1(){};
+        foo1.prototype.a="原型对象属性值";
+        var obj3=new foo1();
+        obj3.n=123;
+        obj3.m="It's you";
+        // 通过in来检测对象上是否有某个属性，也可以检测继承的属性
+        document.write('<hr/>');
+        document.write('n' in obj3);
+        document.write('<br/>');
+        document.write('a' in obj3);
+        document.write('<br/>');
+        document.write('toString' in obj3);
+        // hasOwnProterty检测对象自己是否有这个属性，原型对象属性和继承属性返回：false
+        document.write('<hr/>');
+        document.write(obj3.hasOwnProperty('a'));
+        document.write(obj3.hasOwnProperty('n'));
+        document.write(obj3.hasOwnProperty('m'));
+        // 检测父级对象创建的方法
+        obj2.y="456";
+        document.write('<br/>');
+        document.write('x' in obj2);
+        document.write('<br/>');
+        document.write('y' in obj2);        
+        document.write('<br/>');
+        document.write(obj2.hasOwnProperty('x'));        
+        document.write('<br/>');
+        document.write(obj2.hasOwnProperty('y'));        
+        
+
+    </script>
+</body>
+
+</html>
