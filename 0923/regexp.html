@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>正则表达式练习</title>
+</head>
+
+<body>
+    <script>
+        // 1.通过new对象创建RegExp()对象，注意有两个参数，引号
+        // 内置test()布尔类型检测是否有指定字符
+        var patt=new RegExp('javascript');
+        var patt1=new RegExp('JavaScript','i');
+        var patt2=new RegExp('javaScript','g');
+        var res=patt.test('This is a javascript!');
+        var res1=patt1.test('This is a javascript!');
+        var res2=patt2.test('This is a javascript!');
+
+        document.write(res);
+        document.write('<br/>');        
+        document.write(res1);
+        document.write('<br/>');        
+        document.write(res2);
+        document.write('<br/>');        
+        // 2.直接通过定界符创建正则表达式对象
+        patt=/javascript/;
+        patt1=/javascript/i;
+        patt2=/javascript/g;
+        
+        res=patt.test('Hello,my name is  javascript');
+        res1=patt1.test('Hello,my name is  javascript');
+        res2=patt2.test('Hello,my name is  javascript');
+        
+        document.write('<br/>');
+        document.write(res);
+        document.write('<br/>');
+        document.write(res1);
+        document.write('<br/>');
+        document.write(res2);
+
+
+
+        // 3.通过[]直接一步搞定正则表达式创建、赋值、检测
+        document.write('<hr/>');
+        var patt3=/[abc]/.test('defg');
+        document.write(patt3);
+        document.write('<br/>');
+        // 注意：[^]，这个符号表示排除匹配，没有这个[]时，匹配不一样
+        var patt4=/[^abc]/.test('defg');
+        document.write(patt4);
+        document.write('<br/>');
+        // 检测是否包含数字
+        var patt5=/[0-9]/.test("This is no number");
+        document.write(patt5);
+        document.write('<br/>');
+        // 检测是否包含字母
+        var patt6=/[a-z]/.test('123456789');
+        document.write(patt6);        
+        document.write('<br/>');
+        // 注意：|，这个表示或者匹配
+        var patt7=/php|html|css|javascript/i.test("I has study HTML5 and CSS3 and JAVASCRIPT.");
+        document.write(patt7);
+        document.write('<br/>');
+
+
+        // 4.元字符练习
+        // 注意：. 这个是除换行以外的任意字符
+        var patt8=/./.test("This is a test");
+        var patt8=/./.test("\n");        
+        document.write(patt8);
+        document.write('<br/>');
+        // 注意：\w，这个表示单词字符，相当于匹配：[a-zA-Z0-9]
+        var patt9=/\w/.test("fdashfndsakjfhn");
+        patt9=/\w/.test("$%");
+        document.write(patt9);
+        document.write('<br/>');
+        // 注意：\W，这个表示排除单词字符，相当于匹配：[^a-zA-Z0-9]
+        var patt10=/\W/.test("fdashfndsakjfhn");
+        patt10=/\W/.test("$%");
+        document.write(patt10);
+        document.write('<br/>');
+        // 注意：\s，这个表示匹配空白字符
+        var patt11=/\s/.test("hello world");
+        document.write(patt11);
+        document.write('<br/>');
+         // 注意：\S，这个表示排除匹配空白字符
+         var patt12=/\S/.test("    ");
+        document.write(patt12);
+        document.write('<br/>');
+        //注意：\b，后面几个字母表示匹配单词的边界，可在其前后加字幕
+        var patt13=/\bh/.test("hello");    
+        document.write(patt13);
+        //注意：\B，后面几个字母表示排除匹配单词的边界，可在其前后加字幕
+        document.write('<br/>');
+        var patt14=/o\B/.test("hello");    
+        document.write(patt14);
+        // 注意：\d，这个表示匹配数字，相当于：[0-9]
+        var p=/\d/.test("asdf");
+        document.write('<br/>');
+        document.write(p);
+        // 注意：\D，这个表示排除匹配数字，相当于：[^0-9]
+        var p1=/\D/.test("12345");
+        document.write('<br/>');
+        document.write(p1);
+
+        // 量词应用
+        // 注意：+，在其前面的字幕，表示至少出现一次
+        var patt15=/o+/.test("This is my world");
+        document.write('<hr/>');
+        document.write(patt15);
+        // 注意：*。这个表示出现任意次数都行，零次，一次，多次
+        var patt16=/o*/.test("This is my world");
+        document.write('<br/>');
+        document.write(patt16);
+        // 注意：？，表示匹配零次或者一次
+        var patt17=/x?/.test("Hey,boy,xxx");
+        document.write('<br/>');
+        document.write(patt17);
+        // 注意：{}，这个里面的数字表示匹配的次数,如果是两个数字逗号隔开表示几次到几次之间
+        var patt18=/you{2}/.test("hello ,who are you?");
+        document.write('<br/>');
+        document.write(patt18);
+        var patt19=/me{1,2}/.test("It's me,me,me,me,me,me");
+        document.write('<br/>');
+        document.write(patt19);
+        // 注意：^，后面接字幕，这个表示匹配什么什么字幕开始的单词,默认匹配第一个单词开始
+        var patt20=/^D/.test("Hey,Mrs DU");
+        document.write('<br/>');
+        document.write(patt20);
+        // 注意：$，前面接字母，这个是匹配什么字母结尾，默认匹配第一个单词开始
+        var patt21=/i$/.test("132456i,,");
+        document.write('<br/>');
+        document.write(patt21);
+        // 注意：字母(?=字母)，表示匹配紧跟前后的来个字母
+        var patt22=/o(?=r)/.test("hello world");
+        document.write('<br/>');
+        document.write(patt22);
+        // 注意：字母(?!字母)，表示匹配排除紧跟前后的来个字母
+        var patt23=/o(?!w)/.test("hellow");
+        document.write('<br/>');
+        document.write(patt23);
+        
+
+    </script>
+</body>
+
+</html>

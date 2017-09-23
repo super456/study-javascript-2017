@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>同时定义多个属性及修改</title>
+</head>
+
+<body>
+    <script>
+        // 定义多个属性
+        var obj = {};
+        Object.defineProperties(obj, {
+            username: {
+                value: 123,
+                writable: true,
+                enumerable: true,
+                configurable: true
+            },
+            age: {
+                value: 123456,
+                writable: false,
+            }
+        });
+        document.write(obj.age);
+        // 得到属性的描述
+        document.write('<br/>');
+        document.write(Object.getOwnPropertyDescriptor(obj,'username'));
+        console.log(Object.getOwnPropertyDescriptor(obj,'username'));
+        // 注意这个定义的属性描述
+        obj.addr="北京";
+        console.log(Object.getOwnPropertyDescriptor(obj,'addr'));
+
+
+
+        // 检测对象是否是另一个对象的原型或原型链上的
+        document.write('<br/>');
+        var obj1={x:1};
+        var obj2=Object.create(obj1);
+        document.write(obj1.isPrototypeOf(obj2));
+        document.write('<hr/>');
+        document.write(Object.prototype.isPrototypeOf(obj2));
+        
+
+    </script>
+</body>
+
+</html>

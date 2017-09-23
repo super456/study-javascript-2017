@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>属性的特性练习</title>
+</head>
+
+<body>
+    <script>
+        // 1.属性特性：对象本身的、对象原型的、继承的
+        var obj = {
+            s: 1
+        };
+        document.write('s' in obj);
+        document.write('<br/>');
+        document.write(obj.hasOwnProperty('s'));
+
+        function foo() {};
+        foo.prototype.b = "我是原型属性b的值";
+        var obj2 = new foo();
+        obj2.c = "我是对象本身属性c的值";
+        document.write('<hr/>');
+        document.write('b' in obj2);
+        document.write('<br/>');
+        document.write(obj2.hasOwnProperty('b'));
+        document.write('<br/>');
+        // propertyIsEnumerable检测属性是否是对象自己本身的并且可以枚举的返回true
+        document.write(obj2.propertyIsEnumerable('b'));
+        document.write('<hr/>');
+        document.write('c' in obj2);
+        document.write('<br/>');
+        document.write(obj2.hasOwnProperty('c'));
+        document.write('<br/>');
+        document.write(obj2.propertyIsEnumerable('c'));
+        // 最简单的检测属性是否是undefined
+        document.write('<hr/>');
+        document.write(obj2.k !== undefined);
+
+        // 2.枚举：可以用通过for in循环输出的对象
+        var obj3 = {
+            x: "This is a obj3",
+            y: 456,
+            username: "淡定",
+            addr: "广州"
+        };
+        // 返回的是对象的属性名
+        for (var key in obj3) {
+            document.write('<br/>');
+            document.write(key);
+        }
+        // Object.getOwnPropertyNamea()返回对象所有自有属性的名称
+        document.write('<hr/>');
+        document.write(Object.getOwnPropertyNames(obj3));
+
+        // 3.属性特性的描述
+        // Object.defineProperty()，四个可选键值都为false，注意：该方法定义的属性不能被覆盖和被枚举
+        var obj4 = {};
+        Object.defineProperty(obj4, 'x', {
+            value: "我是defineProperty方法定义的属性值"
+        });
+        document.write('<hr/>');
+        document.write(obj4.x);
+        //检测是否属性被覆盖    
+        document.write('<br/>');
+        obj4.x = 666;
+        document.write(obj4.x);
+        //    检测是否可以被枚举
+        for (var key in obj4) {
+            document.write('<br/>');
+            document.write(key);
+        }
+        //    其他方法检测对象输出
+        document.write('<br/>');
+        document.write(Object.keys(obj4));
+        document.write('<br/>');
+        // 这个方法可以输出对象值
+        document.write(Object.getOwnPropertyNames(obj4));
+        // 再定义一个y属性，改变可选键值
+        Object.defineProperty(obj4,'y',{
+            value:"我是defineProperty定义y的值",
+            // 这三个默认值为false
+            writable:true,//定义是否可写或可改变值
+            configurable:false,//定义是否可配置，就是是否可删除、可可选键值重新定义
+            enumerable:true//定义是否可枚举
+        });
+        document.write('<hr/>');
+        document.write(obj4.y);
+        // 检测是否可以修改y的值
+        obj4.y="我是已修改的y的值";
+        document.write('<br/>');
+        document.write(obj4.y);
+        document.write('<br/>');
+        // 检测是否可枚举
+        document.write(Object.keys(obj4));
+        // 如果configurable值为false的话，不可以重定义可选键值，否则会报错
+        // Object.defineProperty(obj4,'y',{
+        //     writable:false,
+        //     configurable:true
+        // });
+        // 检测是否可以被删除
+        delete obj4.y;
+        document.write('<br/>');
+        document.write(obj4.y);
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>对象的特性——class练习</title>
+</head>
+
+<body>
+    <script>
+        // 类属性
+        // 得到对象类型的方法
+        var obj = {};
+        document.write(obj.toString());
+        document.write('<br/>');
+        var arr = new Array();
+        document.write(Object.prototype.toString.call(arr));
+        document.write('<br/>');
+        var date = new Date();
+        document.write(Object.prototype.toString.call(date));
+
+
+        // 通过方法直接定义返回类型及值
+        function classof(obj) {
+            if (obj === null) {
+                return 'null';
+            } else if (obj === undefined) {
+                return 'undefined';
+            } else {
+                return Object.prototype.toString.call(obj).slice(8, -1);
+            }
+        }
+        document.write('<hr/>');
+        var x = null;
+        x = undefined;
+        x = 'dudu';
+        x = 456;
+        x = [];
+        document.write(classof(x));
+
+
+        // Date()对象方法
+        // 定一个日期时间
+        var d=new Date();
+        document.write('<hr/>');
+        document.write(d);
+        document.write('<br/>');
+        // 传递一串毫秒字符
+        var d1=new Date(1234567891256);
+        document.write(d1);
+        // 传递指定日期格式，传递两个参数也可以
+        var d2=new Date(2005,06,05);
+        document.write('<br/>');
+        document.write(d2);
+
+
+
+
+        // Date()日期对象的内置方法
+        // now()返回1970年1月1日距今的毫秒数
+        document.write('<hr/>');
+        document.write(Date.now());
+        document.write('<br/>');
+        // 解析毫秒数为GMT格式
+        document.write(Date(1506156114609));
+        document.write('<br/>');
+        // parse()将GMT格式解析为毫秒数
+        document.write(Date.parse('Sat Sep 23 2017 16:41:54 GMT'));
+        // getDate()返回一个月的第多少天，1-31之间的值
+        var d3=new Date('2017-10-22 21:00:00');
+        document.write('<br/>');
+        document.write(d3.getDate());
+        var d4=new Date();
+        document.write('<br/>');
+        document.write(d4.getDate());
+        // getDay()得到一个星期的第几天
+        document.write('<br/>');
+        // 返回0表示星期日
+        document.write(d3.getDay());
+        document.write('<br/>');
+        // getFullYear()返回当前年份
+        document.write(d3.getFullYear());
+        document.write('<br/>');
+        // getMonth()得到月份，这个要注意：返回的数是：0-11
+        document.write(d3.getMonth());
+        document.write('<br/>');
+        // getHours得到的是对象小时数
+        document.write(d3.getHours());
+        document.write('<br/>');
+        // getMinutes得到的是对象的分钟数
+        document.write(d3.getMinutes());
+        document.write('<br/>');
+        // getSeconds()得到对象的毫秒数
+        document.write(d3.getSeconds());
+        // getTime()返回y也是当前的毫秒数
+        document.write('<br/>');
+        document.write(d3.getTime());
+        
+        
+        // Date()日期对象：设置时间
+        // setDate()设置月份日期天数
+        document.write('<hr/>');
+        // 参数可用引号或者不用都行
+        d3.setDate(10);
+        // setFullYear()设置年份
+        d3.setFullYear(2018);
+        // setMonth()设置年份
+        d3.setMonth(11);
+        // setHours()设置小时数
+        d3.setHours(22);
+        document.write(d3);
+        document.write('<br/>');
+
+
+
+
+    </script>
+</body>
+
+</html>

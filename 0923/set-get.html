@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>存储器属性set、get练习</title>
+</head>
+
+<body>
+    <script>
+        // 1.认识set、get方法
+        var person = {
+            username: "abc",
+            sex: 21,
+            // 注意这是没有冒号的，这是当调用age时执行的方法
+            get age() {
+                return 123456;
+            },
+            // 注意这是没有冒号的，这是当设置age值时执行的方法
+            set age(val) {
+                document.write("不能设置年龄的值：" + val);
+            }
+        };
+        document.write(person.username+'<br/>');
+        document.write(person.age);
+        document.write('<br/>');
+        person.age=22;
+
+
+        // 2.加深练习认识
+        var obj1={
+            x:3,
+            y:4,
+            z:5,
+            // 注意要调用该对象的方法外的变量，要用this关键字，不然会提示没有定义报错
+            get round(){
+                return this.x+this.y+this.z;
+            },
+            set change(val){
+                document.write((this.x+this.y+this.z)*val);
+            }
+        };
+        document.write('<hr/>');
+        document.write(obj1.x+'<br/>');        
+        document.write(obj1.round+'<br/>');
+        obj1.change=20;
+        // 注意这句话调用会报错，没有定义
+        // document.write(obj1.change);
+        document.write('<br/>');
+        
+        // 3.通过defineProperty方法定义调用
+        Object.defineProperty(obj1,'x',{
+            get :function(){
+                return 456;
+            }
+        });
+        document.write(obj1.x);
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>通过exec获取正则表达式匹配结果</title>
+</head>
+
+<body>
+    <script>
+        // 1.通过exec()方法获取匹配结果，每次只返回一次匹配
+        var p1 = /is/.exec("This is a test");
+        document.write(p1);
+        console.log(p1);
+        console.log(p1[1]);
+        console.log(p1[0]);
+        document.write('<br/>');
+        // 注意：返回的是没有定义的值
+        document.write(p1[1]);
+
+        // exec()方法匹配小案例
+        var str="This is a test,my name is dudu,he is very good!";
+        var patt=/i/ig;
+        var myarr;
+        // 注意：容易造成死循环
+        while((myarr=patt.exec(str))!==null){
+            var msg='找到啦~'+myarr[0]+'!';
+            msg+='下一个匹配从：'+patt.lastIndex+' 开始';
+            document.write('<br/>');
+            document.write(msg);
+        }
+        
+
+        // 支持正则表达式的字符串对象，注意：全局匹配返回的是数组
+        var str1="This is a test";
+        // match()匹配返回的对象值（默认是匹配第一个的返回值）或数组
+        var res=str.match(/s/ig);
+        var res1=str.match(/s/i);
+        
+        document.write('<hr/>');
+        document.write(res);
+        document.write('<br/>');
+        document.write(res1);
+        document.write('<br/>');
+
+        // search()匹配返回的对象匹配成功数目，默认全局匹配
+        var res2=str1.search(/i/i);
+        var res3=str1.search(/i/ig);
+        document.write('<br/>');
+        document.write(res2);
+        document.write('<br/>');
+        document.write(res3);
+        
+
+        // replace()匹配替换相应的字符
+        var res4=str1.replace(/is/ig,'~~');
+        document.write('<br/>');
+        document.write(res4);
+        // 小应用示例1：获取年月日
+        var str2='2017-09-23';
+        var res5=str2.replace(/(\d{4})-(\d{2})-(\d{2})/g,"$1年$2月$3日");
+        document.write('<hr/>');
+        document.write(res5);
+        // 小应用示例2：函数替换并转换处理
+        var str3="Hello Dudu.My name is King";
+        var res6=str3.replace(/[A-Z]/g,repl);
+        function repl(str){
+            return 'super_'+str.toLowerCase();
+        }
+        document.write('<br/>');
+        document.write(res6);
+
+        // split()匹配拆分
+        var res7=str3.split(/\s+/g);
+        document.write('<br/>');
+        document.write(res7);
+
+    </script>
+</body>
+
+</html>
