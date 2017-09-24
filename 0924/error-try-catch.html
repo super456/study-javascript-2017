@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Error对象及类型练习</title>
+</head>
+
+<body>
+    <script>
+        // 1.try-catch()简单的错误捕获并抛出,程序往下会继续执行
+        try {
+            noExists();
+        } catch (error) {
+           document.write(error.name+":"+error.message); 
+        }
+        // try-catch-finally形式的方法，throw方法手动抛出一个错误
+        try{
+            var a=0;
+            // 手动抛出异常
+            if(a==0){
+                throw new Error('0不能被当做除数');
+            }else{
+                document.write(12/a);
+            }
+        }catch(e){
+            document.write('<br/>');
+            document.write(e.name+" : "+e.message);
+        }finally{
+            document.write('<br/>');
+            document.write('这一段代码不管是否错误异常总会被被执行');
+        }
+        document.write('<br/>');
+        document.write('程序不管是否有异常，总会往下执行到这里');
+
+
+        // 2.错误类型示例：根据不同的错误异常进行不同的处理
+        document.write('<hr/>');
+        try {
+            noExists();
+        } catch (error) {
+            if(error instanceof EvalError){
+                document.write('EvalErrot错误异常：'+error.message);
+            }else if(error instanceof RangeError){
+                document.write('RangeError错误异常：'+error.message);
+            }else if(error instanceof SyntaxError){
+                document.write('SyntaxError错误异常：'+error.message);
+            }else if(error instanceof TypeError){
+                document.write('TypeError错误异常：'+error.message);
+            }else {
+                document.write('其他错误异常');
+            }
+        }
+
+        // 自定义错误处理器
+        function myerror(msg){
+            this.name='这是我自定义的异常处理名字';
+            this.message=msg||'这是自定义的异常处理信息';
+        }
+        // 让所有的Error对象都继承这个函数属性
+        myerror.prototype=Object.create(Error.prototype);
+        // 指定构造器函数
+        myerror.prototype.constructor=myerror;
+        try {
+            throw new myerror();
+            // throw new myerror('myerror');
+        } catch (error) {
+            document.write('<br/>');
+            document.write(error.name+':'+error.message);
+        }
+    </script>
+</body>
+
+</html>

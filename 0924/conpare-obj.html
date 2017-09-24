@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>对象之间的比较练习</title>
+</head>
+<body>
+    <script>
+        // 1.对象之间的比较，属性和类型都一样，但是不是同一个对象
+        var a={x:1};
+        var b={x:1};
+        document.write(a==b);
+        document.write('<br/>');
+        
+        
+        // 注意：这两个对象之间的等于赋值，传递的指向同一个对象引用
+        var c=a;
+        c.x=123;
+        document.write(c.x);
+        document.write('<br/>');
+        // 注意：a对象的x值
+        document.write(a.x);
+        
+        // 2.通过函数定义对象值，注意：这是两个对象的引用
+        function fc(obj){
+            obj.x=456;
+        }
+        fc(c);
+        document.write('<br/>');
+        document.write(c.x);
+        document.write('<br/>');
+        document.write(a.x);
+        // 注意：同一个对象需要指向同一个对象的引用
+        document.write('<hr/>');
+        document.write(a==c);
+        document.write('<br/>');      
+        document.write(a===c);
+    </script>
+</body>
+</html>
