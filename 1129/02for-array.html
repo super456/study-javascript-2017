@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>遍历数组中的元素</title>
+</head>
+<body>
+    <script type="text/javascript">
+    //使用for()遍历连续下标的数组，只能遍历连续下标的数组
+    arr1=[1,2,3,4,5];
+    for(var i=0;i<arr1.length;i++){
+        document.write(arr1[i]+'<br/>');
+        console.log(arr1[i]);
+    }
+
+    //使用for-in()方法遍历继承下来的属性元素，可以是不连续下标的数组元素
+    arr2=[];
+    arr2[12]='dudu';
+    arr2[20]='super';
+    arr2[50]='man';
+    for(var i in arr2){
+        document.write('数组下标为：'+i+' 的元素是：'+arr2[i]+'<br/>');
+    }
+
+    //遍历自身的数组元素，排除继承的数组元素，使用hasOwnProperty()方法
+    for(var i in arr2){
+        if(arr2.hasOwnProperty(i)){
+            document.write('遍历自身的数组元素：'+arr2[i]+'<br/>');
+        }
+    }
+
+    //forEach()遍历数组方法体，格式为：Array.forEach(function(value[,index[,array]]){函数体})
+    arr3=[1,2,3,4,5,6];
+    arr3.forEach(function(x) {
+        document.write('数组元素为：'+x+'<br/>');
+    });
+    //自定义调用的数组方法体，第一个参数是每次的数组元素，第二个参数是索引值，第三个参数是要处理的数组全部元素
+    function Test(element,index,array){
+        document.write('要处理的数组元素为：'+array+"<br/>");
+        document.write('每次都会调用的这个方法体，这是第'+index+'次调用了'+'<br/>');
+        document.write('输出的数组元素为：'+element+'<br/>');
+    }
+    arr3.forEach(Test);
+
+
+    </script>
+</body>
+</html>

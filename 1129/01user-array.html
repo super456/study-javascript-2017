@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>如何使用数组元素</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // 使用、添加、修改、删除数组
+        var a =[1,2,3,4,5,];//数组会自动忽略逗号后面的空元素
+        document.write(a.length);
+        document.write('<br/>');
+        document.write(a[0]);
+        a[0]='小肚子';
+        document.write('<br/>');
+        document.write(a[0]);
+        console.log(a);
+        var x=4;
+        a[a[x]]="使用嵌套数组变量索引值赋值";
+        document.write('<br/>');
+        document.write(a);
+        // 注意：数组索引值必须是非负整数，如果是其他则不改变数组长度
+        document.write('<hr/>');
+        var b=[];
+        b[0]='0';
+        b[2]=2;
+        document.write(b);
+        b[-123]=-123;
+        b['name']=456;
+        b[false]=789;
+        console.log(b);
+        document.write('<br/>');
+        document.write('改变数组长度');
+        var c=new Array(10);//数组长度赋值为10
+        c=[];//数组长度改为空
+        document.write('<br/>');
+        document.write(c.length);
+        console.log(c);
+        
+        //数组索引值大小比赋值的大小要大一，因为数组下标从0开始
+        d=[];
+        d[100]='100';
+        console.log(d.length);
+        document.write('<br/>');
+        document.write(d.length);
+        
+        //重新定义数组长度，超过的部分会删除数组原来的元素
+        e=[1,2,3,4,5,6,7];
+        e.length=4;//长度赋值为零时，删除数组的元素
+        document.write('<br/>');
+        document.write(e);
+        
+        //定义不能修改数组的属性长度，要用到对象的定义属相的可写性改为false
+        var f=[123,456,789];
+        Object.defineProperty(f,'length',{
+            writable:false,
+        });
+        document.write('<br/>');
+        document.write(f.length);
+        document.write('<br/>');
+        f.length=10;//此时没有修改成功
+        document.write('修改后的数组长度为：'+f.length);
+        
+        //push()添加数组末尾的元素，pop()删除并弹出数组末尾的元素
+        var arr1=[1,2,3];
+        arr1[3]=456;
+        arr1.push('123456');
+        arr1.push('456789','dudu');
+        document.write('<br/>');
+        document.write(arr1);
+        document.write('<br/>');
+        var p=arr1.pop();
+        document.write(p);
+        document.write('<br/>');
+        document.write(arr1);
+        
+        //unshift()在数组首部添加元素，shift()删除并弹出数组首部的元素
+        arr1.unshift(666,666666666);
+        document.write('<br/>');
+        document.write(arr1);
+        var shiftProperty=arr1.shift();
+        document.write('<br/>');
+        document.write(shiftProperty);
+        document.write('<br/>');
+        document.write(arr1);
+
+        //delete 数组下标，删除指定元素，删除后数组长度是不变的，还是原来的长度
+        arr2=[1,2,3];
+        delete arr2[1];
+        document.write('<hr/>');
+        document.write(arr2);
+        document.write('数组的长度为：'+arr2.length);
+        
+
+    </script>
+</body>
+</html>
