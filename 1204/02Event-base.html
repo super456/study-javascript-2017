@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>內联模型事件处理</title>
+</head>
+<body>
+    <!-- 基本不用，因为没有实现代码分离，通用性差，维护不方便，违反代码层次分离的原则 -->
+    <input type="button" value="test1" onclick="alert('This is a test1');">   
+    <input type="button" value="test2" onclick="test2();">
+    <script>
+    function test2(){
+        alert('This is a test2');
+    }
+    </script>
+</body>
+</html>
