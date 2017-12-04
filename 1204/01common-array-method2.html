@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>常用数组方法2练习</title>
+</head>
+<body>
+    <script>
+    //自己指定排序
+    var user=[
+        {name:"dudu",age:12},
+        {name:"zhangsan",age:45},
+        {name:"lisi",age:78},
+        {name:"wangwu",age:69}
+    ];
+    user.sort(function(a,b){
+        if(a.name>b.name) return 1;
+        else return -1;
+    });
+    for(var i in user){
+        document.write('<br/>');
+        document.write(user[i].name);
+    }
+
+    //连接数组元素或连接新的（增加）数组元素
+    var arr4=[1,2,3];
+    arr4.concat([4,5,6]);//注意这样连接无效，必需赋值给一个数组变量,否则原来数组元素不变
+    document.write('<hr/>');
+    document.write(arr4);   
+    var res=arr4.concat([4,5,6]);
+    document.write('<br/>');
+    document.write(res);
+    res=arr4.concat([[7,8,9],[10,11,12]],[13,14,15]);//复杂连接
+    document.write('<br/>');
+    document.write(res);
+    console.log(res); 
+
+    //获取数组指定元素 slice(start[,end])，获取开始索引值到结束索引值之间的元素
+    //参数可以是负数，负数表示从末尾元素索引值-1开始算起，不包括结束位置的元素
+    var arr5=[1,2,3,4,5,6,'a','b','c'];
+    res=arr5.slice(1,5);
+    document.write("<hr/>");
+    document.write(res);
+    res=arr5.slice(2,-3);
+    document.write('<br/>');
+    document.write(res);
+    document.write('<br/>');
+    res=arr5.slice(0,-1);
+    document.write(res);
+    res=arr5.slice(5);
+    document.write('<br/>');
+    document.write(res);
+
+
+    //slice(a[,b,数组元素])，获取并删除指定索引值的元素，返回也是数组，也可以在删除的同时新增删除索引值位置元素
+    var arr6=['a','b','c','d'];
+    res=arr6.splice(0,2);
+    document.write('<hr/>');
+    document.write(res);
+    document.write('<br/>');
+    document.write(arr6);
+    res=arr6.splice(0,1,'!','@','#');
+    document.write('<br/>');
+    document.write(res);
+    document.write('<br/>');
+    document.write("查看数组剩下的元素："+arr6);
+
+    //map(function(x){})方法是处理数组元素方式，比如将数组元素平方、转换大小写等
+    var arr7=[1,2,3];
+    var arr8=['a!','b!','e'];
+    res=arr7.map(function(x){
+        return x*x
+    });
+    document.write('<hr/>');
+    document.write(res);
+    res=arr8.map(Test);
+    function Test(x){
+        return x.replace(/!/g,'!').toUpperCase();
+    }
+    document.write('<br/>');
+    document.write(res);
+
+    //filter(function(x){})方法过滤或判断数组元素，返回新数组元素
+    var arr9=[2,1,45,21,65,785,12341,754,123];
+    res=arr9.filter(function(x){
+        return x>100;
+    });
+    document.write('<hr/>');
+    document.write(res);
+    res=arr9.filter(function(x,i){//第二个参数是索引值
+        return i%2==1;
+    });
+    document.write('<br/>');
+    document.write("判断数组下标索引值是否为奇数，是则输出："+res);
+
+
+    //reduce(function(x,y){}[,参数])方法，调用回调函数累加器
+    res=arr9.reduce(function(x,y){
+        return x+y;
+    });
+    document.write("<hr/>");
+    document.write(res);
+    res=arr9.reduce(function(x,y){
+        return x+y;
+    },100000);
+    document.write("<hr/>");
+    document.write(res);
+
+
+    //every(function(x){})方法判断数组每一个元素是否都符合条件，返回真或假
+    res=arr9.every(function(x){
+        return x>0;
+    });
+    document.write('<hr/>');
+    document.write(res);
+
+
+    //some(function(x){})，判断数组中是否有某个元素大于指定条件，返回真或假
+    res=arr9.some(function(x){
+        return x>100;
+    });
+    document.write('<hr/>');
+    document.write(res);
+
+
+    //indexOf(字符[,k])方法检测数组是否存在指定的元素字符(有则返回索引值，没有则返回-1)，k表示指定开始检测的索引值位置，注意区分大小写
+    var arr10=['A','B','C','d','a','a','S'];
+    res=arr10.indexOf('a',4);
+    document.write('<hr/>');
+    document.write(res);
+    document.write('<br/>');
+    res=arr10.indexOf('c');
+    document.write(res);
+
+    //lastIndexOf(字符)方法检测数组元素是否存在指定的元素字符，有则返回最后一次出现的索引值，没有则返回-1，注意区分大小写
+    res=arr10.lastIndexOf('a');
+    document.write('<hr/>');
+    document.write(res);
+
+
+    //isArray(变量或字符)方法判断是否为数组，返回真或假
+    res=Array.isArray(arr10);
+    document.write('<hr/>');
+    document.write(res);
+    document.write("<br/>");
+    document.write(Array.isArray([]));
+
+
+    //toString()方法将数组元素连接成以逗号隔开的字符串，类似join()方法
+    document.write('<hr/>');
+    document.write(arr10.toString());
+    
+
+
+    </script>
+</body>
+</html>
