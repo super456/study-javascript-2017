@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>了解一下Event事件</title>
+</head>
+<body>
+    <input type="button" value="text1" id="btn1">
+    <script>
+    var btn1=document.getElementById('btn1');
+    btn1.onclick=function(event){
+        alert(event);
+        var e=event||window.event;//浏览器兼容性问题，IE支持window.event事件
+        alert(e);
+        alert(e.type);
+    }
+    </script>
+</body>
+</html>
