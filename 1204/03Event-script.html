@@ -8,10 +8,28 @@
 </head>
 <body>
     <input type="button" value="test1" id="btn1">
+    <input type="button" value="test2" id="btn2">
+    <input type="button" value="test3" id="btn3">
     <script>
+        //给元素赋值函数
     var btn1=document.getElementById('btn1');
     btn1.onclick=function(){
         alert('This is a test!');
+    }
+    function Test(){
+        alert('This is a Test Function!');
+    }
+    var btn2=document.getElementById('btn2');
+    btn2.onclick=Test;//注意不能加括号，否则会报错
+
+
+    //删除元素绑定的函数
+    var btn3=document.getElementById('btn3');
+    var count=0;
+    btn3.onclick=function(){
+        alert(count++);
+        if(count==2) btn3.onclick=null;
+
     }
     </script>
 </body>
