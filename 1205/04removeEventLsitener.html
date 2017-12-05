@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>移除添加的事件处理练习</title>
+</head>
+<body>
+    <input type="button" value="test1" id="test1">
+    <input type="button" value="test2" id="test2">
+    <input type="button" value="test3" id="test3">
+    <script>
+    var test1=document.getElementById('test1');
+    test1.addEventListener('click',function(){
+        alert('a');
+    },false);
+    test1.addEventListener('click',function(){
+        alert('b');
+    },false);
+    test1.addEventListener('click',function(){
+        alert('c');
+    },false);
+
+    //添加命名函数方法来处理事件
+    var test2=document.getElementById('test2');
+    var count=1;
+    var handle1=function(){
+       
+        alert('This is a handle1 and:'+count);
+        if(count==3){
+            alert('该事件已移除！');
+            test2.removeEventListener('click',handle1,false);
+        }
+        count++;
+    }
+    test2.addEventListener('click',handle1,false);
+    
+    //注意：移除事件在匿名函数中，IE中无效
+    var test3=document.getElementById('test3');
+    test3.addEventListener('click',function(){
+        alert('This is a test3');
+        test3.removeEventListener('click',function(){
+            alert('This is a test3 removeEventListener');
+        },false);
+    },false);
+
+
+    //注意：ie8之前的attachEvent()事件，出现出现顺序
+    </script>
+</body>
+</html>
