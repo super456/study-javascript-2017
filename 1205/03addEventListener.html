@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM2练习</title>
+</head>
+
+<body>
+    <div id="div" style="width:200px;height:200px;background:#c0c0c0;">
+        <input type="button" id="btn" value="test1"></div>
+        <hr/>
+        <div id="div1" style="width:200px;height:200px;background:#c0c0c0;">
+                <input type="button" id="btn1" value="test2">
+    </div>
+    <script>
+    var btn=document.getElementById('btn');
+    btn.addEventListener('click',function(event){
+        alert('button1 clicked!');
+        //取消以下冒泡顺序
+        //使用统一格式方法
+        if(typeof event.cancelBubble=='undefined'){
+            event.stopPropagation();
+        }else{
+            event.cancelBubble=true;
+        }
+
+    },false);//注意有三个参数，第一个参数是绑定的触发事件，第二个参数是函数方法或匿名函数，第三个默认是false是冒泡顺序，改为true是捕获顺序
+    var div=document.getElementById('div');
+    div.addEventListener('click',function(){
+        alert('div1 clicked');
+    },false);
+    document.body.addEventListener('click',function(){
+        alert('body clicked!');
+    },false);
+    document.documentElement.addEventListener('click',function(){
+    alert('html clicked!');
+    },false);
+    document.addEventListener('click',function(){
+        alert('document clicked!');
+    },false);
+
+   var btn1=document.getElementById('btn1');
+    btn1.addEventListener('click',function(){
+        alert('button2 clicked!');
+        //取消以下冒泡顺序
+
+    },true);//注意有三个参数，第一个参数是绑定的触发事件，第二个参数是函数方法或匿名函数，第三个默认是false是冒泡顺序，改为true是捕获顺序
+    var div1=document.getElementById('div1');
+    div.addEventListener('click',function(){
+        alert('div2 clicked');
+    },true);
+    // document.body.addEventListener('click',function(){
+    //     alert('body clicked!');
+    // },true);
+    // document.documentElement.addEventListener('click',function(){
+    // alert('html clicked!');
+    // },true);
+    // document.addEventListener('click',function(){
+    //     alert('document clicked!');
+    // },true);
+    </script>
+</body>
+
+</html>
