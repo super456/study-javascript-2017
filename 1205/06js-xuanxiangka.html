@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>简单的选项卡原理练习</title>
+    <style>
+    div{
+        width:500px;
+        height: 500px;
+        border: 1px solid red;
+        display: none;
+    }
+    
+    </style>
+    <!-- 
+        理清思路：
+                要实现的功能是：默认显示选项卡一按钮对应的div，其他按钮背景色去掉及对应div隐藏
+            
+                难点：如何获取上一个点击的input
+           
+        分析及实现过程：
+             1.获取所有的input及div
+             2.给每一个按钮添加点击事件（具体）
+                 1.点击当前按钮，去掉上一个按钮的背景色及对应的div隐藏
+                 2.显示当前按钮的背景色及对应的div
+             
+            原理：每个input的下标索引值对应div相同下标的索引值的div,只要找到下标索引值则找到对应的input和div     
+
+
+     -->
+
+     <script>
+         window.onload=function(){
+         //获取指定标签的集合元素
+     var inputs=document.querySelectorAll('input');
+     var divs=document.querySelectorAll('div');
+     var last=inputs[0];//默认页面显示第一个点击的按钮
+
+
+     //给每个按钮添加点击事件
+     for(var i=0;i<inputs.length;i++){
+         //给每个input[i]自定义一个属性，存的是i的值
+         inputs[i].index=i;
+
+        inputs[i].onclick=function(){
+            //把上一次的按钮的背景色去掉
+            last.style.background='';
+
+            //当前点击的对象this，则当前点击的对象索引值为this.index
+            //把上一个按钮对应的div隐藏，主要是要找到对应的下标值
+            divs[last.index].style.display='none';
+
+            //给当前点击的对象this的按钮显示背景色
+            this.style.background='yellow';
+
+            //给当前的点击按钮对应的div显示出来
+            divs[this.index].style.display='block';
+
+
+            //把上一次点击对象更新成当前的点击对象（相对于下一次点击的对象，这个就是上一次点击的对象）
+            last=this;
+            
+        };
+     }
+    };
+     </script>
+</head>
+<body>
+    <input type="button" value="选项卡一" style="background:yellow;">
+    <input type="button" value="选项卡二">
+    <input type="button" value="选项卡三">
+    <hr/>
+    <div style="display:block;">内容一</div>
+    <div>内容二</div>
+    <div>内容三</div>
+</body>
+</html>
