@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件流及冒泡顺序</title>
+</head>
+<body>
+    <div id="div" style="width:200px;height:200px;background:#c0c0c0;"><input type="button" id="btn" value="test"></div>
+    <script>
+    var btn=document.getElementById('btn');
+    btn.onclick=function(event){
+        alert('botton click!');
+        //取消以下冒泡顺序
+        //1. w3c取消方式，需要传进一个参数event
+       // event.stopPropagation();
+        //2. IE8及以下取消方法
+       // var e=event||window.event;
+      //  alert(e.cancelBubble);//默认值为false，设置为true时取消以下冒泡顺序
+      //e.cancelBubble=true;//谷歌浏览器有效
+
+      //3.统一格式判断方法
+      if(typeof event.cancelBubble=='undefined'){
+        event.stopPropagation();
+      }else{
+          event.cancelBubble=true;
+      }
+
+
+    }
+    var div=document.getElementById('div');
+    div.onclick=function(){
+        alert('div click!');
+    }
+    document.body.onclick=function(){
+        alert('body click!');
+    }
+    document.documentElement.onclick=function(){
+        alert('html click!');
+    }
+    document.onclick=function(){
+        alert('document click!');
+    }
+    //冒泡点击的顺序是：botton->div->body->html->document
+    
+    </script>
+</body>
+</html>
