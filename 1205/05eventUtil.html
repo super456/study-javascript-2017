@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>添加一个游览器兼容性判断并处理的事件</title>
+    <script src="EventUtil.js"></script>
+</head>
+<body>
+    <input type="button" value="test1" id="test1">
+    <input type="button" value="test2" id="test2">
+    <script>
+    var test1=document.getElementById('test1');
+    var tt1=function(){
+        alert('添加绑定');
+    }
+    EventUtil.addEventListenerHandler(test1,'click',tt1);
+    var test2=document.getElementById('test2');
+    var tt2=function(){
+        alert('移除绑定的事件');
+        EventUtil.removeEventListenerHandler(test1,'click',tt1);
+    }
+    EventUtil.addEventListenerHandler(test2,'click',tt2);
+    
+    </script>
+</body>
+</html>
