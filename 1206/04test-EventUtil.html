@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>测试封装好的浏览器兼容性测试</title>
+    <script src="../1205/EventUtil.js"></script>
+</head>
+<body>
+    <input type="button" value="test" id="btn1"/>
+
+    <br/>
+    <a href="https:www.baidu.com" id="testLink">百度链接</a>
+    <script>
+    var btn1=document.getElementById('btn1');
+    EventUtil.addEventListenerHandler(btn1,'click',function(event){
+        event=EventUtil.getEvent(event);
+        var target=EventUtil.getTarget(event);
+        alert(target.tagName);
+    },false);
+
+    //测试是否可以取消百度链接跳转
+    var testLink=document.getElementById('testLink');
+    testLink.onclick=function(event){
+        event=EventUtil.getEvent(event);
+        EventUtil.getPreventDefault(event);
+        // event.preventDefault();
+    };
+    </script>
+</body>
+</html>
