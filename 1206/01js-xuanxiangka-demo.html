@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js选项卡自练习</title>
+    <style>
+        div {
+            width: 500px;
+            height: 500px;
+            border: 1px solid red;
+            font-size: 50px;
+            display: none;
+        }
+
+        .button {
+            background: yellow;
+        }
+
+        .div {
+            display: block;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+
+            var inputs = document.querySelectorAll('input');
+            var divs = document.querySelectorAll('div');
+            var last = inputs[0];
+
+            for (var i = 0; i < inputs.length; i++) {
+                inputs[i].index = i;
+                inputs[i].onclick = function () {
+                    last.style.background = '';
+                    divs[last.index].style.display = 'none';
+
+                    this.style.background = 'yellow';
+                    divs[this.index].style.display = 'block';
+                    last = this;
+
+                };
+            }
+
+        }
+    </script>
+</head>
+
+<body>
+    <!-- 如果使用class定义的样式属性，js改变不了样式 -->
+    <!-- <input type="button" value="选项卡一" class="button"> -->
+    <input type="button" value="选项卡一" style="background:yellow;">
+    
+    <input type="button" value="选项卡二">
+    <input type="button" value="选项卡三">
+    <hr/>
+    <div class="div">内容一</div>
+    <div>内容二</div>
+    <div>内容三</div>
+</body>
+
+</html>
