@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>简单的表单验证</title>
+</head>
+
+<body>
+    <form action="#" method="post" onsubmit="return check();">
+        用户名：
+        <input type="text" name="ueername" id="username">
+        <span>请输入只能包含数字字母下划线的组合</span>
+        <br/> 密码：
+        <input type="password" name="password" id="password">
+        <span>请输入合法的密码</span>
+        <br/>
+        <input type="submit" value="submit">
+    </form>
+    <script>
+        function check() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            if (!/^[a-zA-Z0-9_]+$/.test(username)) {
+                alert('该用户名不合法');
+                return false;
+            }
+            if (/^[\n\t\s\r]*$/.test(password)) {
+                alert('该密码不合法');
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+
+</html>
