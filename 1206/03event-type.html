@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件对象及兼容性</title>
+    <script>
+        window.onload = function () {
+            var btn1 = document.getElementById('btn1');
+            btn1.onclick = function (event) {
+                //主要为了判断事件类型
+                alert(event.type);
+                alert(event.currentTarget);
+                alert(this === event.currentTarget);
+                alert(event.target); //跟第二个效果一样
+            }
+
+
+
+
+        }
+    </script>
+</head>
+
+<body>
+    <input type="button" value="test" id="btn1">
+    <input type="button" value="test2" id="btn2">
+
+    <br/>
+    <a href="https:www.baidu.com" id="test">百度链接</a>
+    <script>
+        //判断事件触发的类型及处理的函数
+        var btn2 = document.getElementById('btn2');
+        var handler = function (event) {
+            switch (event.type) {
+                case 'click':
+                    alert('click!');
+                    break;
+                case 'mouseover':
+                    event.target.style.background = 'red';
+                    break;
+                case 'mouseout':
+                    event.target.style.background = '';
+                    break;
+            }
+
+
+        };
+        //注意这里赋值的变量不能添加括号
+        btn2.onclick = handler;
+        btn2.onmouseover = handler;
+        btn2.onmouseout = handler;
+
+
+        //停止超链接的跳转
+        var test=document.getElementById('test');
+        test.onclick=function(event){
+            alert(event.cancelable);
+            event.preventDefault();//取消默认行为，前提是cancellabel为true
+        };
+    </script>
+</body>
+
+</html>
